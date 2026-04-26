@@ -1,0 +1,53 @@
+{
+  "name": "@risqiikhsani/novasdk",
+  "version": "1.0.0",
+  "description": "A utility library for common Node.js tasks.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "utility",
+    "utils",
+    "log",
+    "logger",
+    "novasdk"
+  ],
+  "author": "Risqi Ikhsani",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/risqiikhsani/novasdk"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cli-progress": "^3.12.0",
+    "cli-table3": "^0.6.5",
+    "ora": "^8.2.0"
+  }
+}
