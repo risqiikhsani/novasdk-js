@@ -169,3 +169,17 @@ export async function timerAsync<T>(fn: () => Promise<T>): Promise<T> {
   nova_log.info(`Elapsed: ${elapsed}s`);
   return result;
 }
+
+export function banner(text: string, char: string = "═", width: number = 40): void {
+  const padded = ` ${text} `;
+  const border = char.repeat(width);
+  console.log(chalk.cyan(border));
+  console.log(chalk.cyan.bold(padded.padStart(Math.floor((width + padded.length) / 2))).padEnd(width));
+  console.log(chalk.cyan(border));
+}
+
+export function ascii_bar(current: number, total: number, size: number = 20): string {
+  const filled = Math.round((current / total) * size);
+  const empty = size - filled;
+  return "█".repeat(filled) + "░".repeat(empty);
+}

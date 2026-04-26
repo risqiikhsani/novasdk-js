@@ -10,76 +10,64 @@ A step-by-step guide to updating an existing NovaSDK package on the npm registry
 
 Make your changes in the `src/` directory:
 
-```bash
-# Edit the files you need to update
+```
 src/
-├── index.ts        # Main entry point
+├── index.ts        # Main entry point (version lives here)
 └── utils/
     └── index.ts    # Utility functions
 ```
 
-### Step 2: Update the Version
+### Step 2: Bump the Version
 
-Bump the version in **three places**:
+You must update the version in **two places**:
 
-#### A. `package.json` — `version` field
+**A. `package.json`** — `version` field:
 
 ```json
-{
-  "version": "1.0.1"
-}
+"version": "1.1.1"
 ```
 
-#### B. `src/index.ts` — `__version__` constant (optional)
+**B. `src/index.ts`** — `__version__` constant:
 
 ```typescript
-export const __version__ = "1.0.1";
+export const __version__ = "1.1.1";
 ```
 
-> **Note:** If you use **Release Please** or automated versioning tools, this step may be handled automatically.
+> **npm rejects republishing the same version** — always bump it before publishing.
 
-### Step 3: Rebuild the Project
+### Step 3: Rebuild
 
 ```bash
-# Clean old build (optional)
+# Clean old dist (optional but recommended)
 rm -rf dist/
 
 # Install dependencies
 pnpm install
 
-# Rebuild
+# Build TypeScript → dist/
 pnpm run build
 ```
 
 ### Step 4: Test Locally
 
 ```bash
-# Link the package locally
+# Link the package so you can import it from anywhere
 npm link
 
-# In another project or test file, import it
-import { nova_log, print_success } from "@risqiikhsani/novasdk";
-
-print_success("Hello from NovaSDK!");
+# In another directory, run:
+node -e "import('@risqiikhsani/novasdk').then(m => console.log(m.__version__))"
 ```
 
-### Step 5: Publish the Update
+### Step 5: Publish
 
 ```bash
 npm publish --access public
 ```
 
-### Step 6: Verify the Update
+### Step 6: Verify
 
 ```bash
 npm view @risqiikhsani/novasdk version
-```
-
-Or install and check:
-
-```bash
-npm install @risqiikhsani/novasdk
-node -e "import('@risqiikhsani/novasdk').then(m => console.log(m.__version__))"
 ```
 
 ---
@@ -89,31 +77,32 @@ node -e "import('@risqiikhsani/novasdk').then(m => console.log(m.__version__))"
 | Command | Purpose |
 |---------|---------|
 | `pnpm install` | Install dependencies |
-| `pnpm run build` | Rebuild after changes |
+| `pnpm run build` | Compile TypeScript → dist/ |
 | `rm -rf dist/` | Clear old build files |
-| `npm link` | Test locally |
-| `npm publish --access public` | Publish update |
+| `npm link` | Test locally before publishing |
+| `npm publish --access public` | Publish to npm |
 | `npm view @risqiikhsani/novasdk version` | Check published version |
 
 ---
 
-## Important Rules
+## Semantic Versioning
 
-1. **Never republish the same version** — npm will reject it
-2. **Always bump the version** before publishing an update
-3. **Use semantic versioning:**
-   - `PATCH` (1.0.**1**) — Bug fixes
-   - `MINOR` (1.**1**.0) — New features (backwards compatible)
-   - `MAJOR` (**2**.0.0) — Breaking changes
+- **PATCH** (1.0.**1**) — Bug fixes
+- **MINOR** (1.**1**.0) — New features (backwards compatible)
+- **MAJOR** (**2**.0.0) — Breaking changes
 
 ---
 
-## Automated Versioning (Optional)
+## Authentication
 
-If you want automated versioning, you can set up **Release Please**:
+If publishing fails with `E403`, you need an automation token:
 
-1. Add a GitHub Actions workflow in `.github/workflows/release.yml`
-2. Push commits to trigger version bumps automatically
-3. Releases are published automatically on version changes
+1. Go to [https://www.npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens)
+2. Generate a new token with **Automation** type
+3. Add it to `~/.npmrc`:
 
-For manual control, just update the version numbers in `package.json` before each publish.
+```bash
+echo "//registry.npmjs.org/:_authToken=YOUR_TOKEN_HERE" >> ~/.npmrc
+```
+
+This lets npm authenticate automatically — no `npm login` needed after this.
