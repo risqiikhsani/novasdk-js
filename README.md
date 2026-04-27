@@ -5,20 +5,20 @@ A utility library for common Node.js tasks.
 ## Installation
 
 ```bash
-npm install @risqiikhsani/novasdk
+npm install @hypernova-sdk/core
 ```
 
 Or using yarn/pnpm:
 
 ```bash
-yarn add @risqiikhsani/novasdk
-pnpm add @risqiikhsani/novasdk
+yarn add @hypernova-sdk/core
+pnpm add @hypernova-sdk/core
 ```
 
 ## Quick Start
 
 ```javascript
-import novasdk from "@risqiikhsani/novasdk";
+import novasdk from "@hypernova-sdk/core";
 
 console.log(novasdk.__version__);
 
@@ -71,7 +71,7 @@ console.log(result);
 ### Logger
 
 ```javascript
-import { NovaLogger } from "@risqiikhsani/novasdk";
+import { NovaLogger } from "@hypernova-sdk/core";
 
 const logger = new NovaLogger({ showTime: true, showLevel: true });
 logger.success("Hello!");

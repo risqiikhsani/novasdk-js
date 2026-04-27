@@ -1,6 +1,6 @@
 # How to Publish to npm Registry
 
-A step-by-step guide to publishing the NovaSDK package to the npm registry.
+A step-by-step guide to publishing the HyperNova SDK package to the npm registry.
 
 ---
 
@@ -36,12 +36,12 @@ Before publishing, make sure your `package.json` has the correct details:
 
 ```json
 {
-  "name": "@risqiikhsani/novasdk",
+  "name": "@hypernova-sdk/core",
   "version": "1.0.0",
   "description": "A utility library for common Node.js tasks.",
   "main": "dist/index.js",
   "type": "module",
-  "keywords": ["utility", "utils", "log", "logger", "novasdk"],
+  "keywords": ["utility", "utils", "log", "logger", "hypernova", "hypernova-sdk"],
   "author": "Risqi Ikhsani",
   "license": "MIT"
 }
@@ -73,7 +73,7 @@ npm link
 Then in another directory:
 
 ```bash
-npm link @risqiikhsani/novasdk
+npm link @hypernova-sdk/core
 ```
 
 ### Step 6: Publish to npm
@@ -87,13 +87,13 @@ npm publish --access public
 ### Step 7: Verify the Package
 
 ```bash
-npm view @risqiikhsani/novasdk
+npm view @hypernova-sdk/core
 ```
 
 Or install it:
 
 ```bash
-npm install @risqiikhsani/novasdk
+npm install @hypernova-sdk/core
 ```
 
 ---
@@ -106,8 +106,8 @@ npm install @risqiikhsani/novasdk
 | `pnpm run build` | Compile TypeScript |
 | `npm login` | Login to npm |
 | `npm publish --access public` | Publish to npm |
-| `npm view @risqiikhsani/novasdk` | View package info |
-| `npm install @risqiikhsani/novasdk` | Install from npm |
+| `npm view @hypernova-sdk/core` | View package info |
+| `npm install @hypernova-sdk/core` | Install from npm |
 
 ---
 

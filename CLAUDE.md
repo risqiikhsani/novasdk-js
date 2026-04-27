@@ -13,7 +13,7 @@ npm publish --access public  # Publish to npm (scoped package requires --access 
 
 ## Project Architecture
 
-**Package:** `@risqiikhsani/novasdk` — a utility library for pretty console output in Node.js.
+**Package:** `@hypernova-sdk/core` — a utility library for pretty console output in Node.js.
 
 **Source structure:**
 - `src/index.ts` — Main entry point. Re-exports everything from utils and exposes `__version__`.

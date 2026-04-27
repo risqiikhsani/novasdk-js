@@ -55,7 +55,7 @@ pnpm run build
 npm link
 
 # In another directory, run:
-node -e "import('@risqiikhsani/novasdk').then(m => console.log(m.__version__))"
+node -e "import('@hypernova-sdk/core-js').then(m => console.log(m.__version__))"
 ```
 
 ### Step 5: Publish
@@ -67,7 +67,7 @@ npm publish --access public
 ### Step 6: Verify
 
 ```bash
-npm view @risqiikhsani/novasdk version
+npm view @hypernova-sdk/core version
 ```
 
 ---
@@ -81,7 +81,7 @@ npm view @risqiikhsani/novasdk version
 | `rm -rf dist/` | Clear old build files |
 | `npm link` | Test locally before publishing |
 | `npm publish --access public` | Publish to npm |
-| `npm view @risqiikhsani/novasdk version` | Check published version |
+| `npm view @hypernova-sdk/core version` | Check published version |
 
 ---
 

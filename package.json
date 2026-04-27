@@ -1,5 +1,5 @@
 {
-  "name": "@risqiikhsani/novasdk",
+  "name": "@hypernova-sdk/core",
   "version": "1.1.0",
   "description": "A utility library for common Node.js tasks.",
   "main": "dist/index.js",
@@ -28,13 +28,14 @@
     "utils",
     "log",
     "logger",
-    "novasdk"
+    "hypernova",
+    "hypernova-sdk"
   ],
   "author": "Risqi Ikhsani",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/risqiikhsani/novasdk"
+    "url": "https://github.com/risqiikhsani/novasdk-js"
   },
   "engines": {
     "node": ">=18.0.0"
